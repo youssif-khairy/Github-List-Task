@@ -1,0 +1,26 @@
+<div class="scrol-wrapper" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()" [infiniteScrollContainer]="'.ps'">
+  <perfect-scrollbar>
+
+    <div class="wrapper">
+      <div class="card mb-3" style="max-width: 740px;" *ngFor="let item of (list | async)">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img class="img-responsive" [src]="item?.owner?.avatar_url" [alt]="item?.owner?.name">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ item?.name}}</h5>
+              <p class="card-text">{{item?.description}}</p>
+              <p class="card-text d-flex justify-content-between">
+                <small class="text-muted brdr"> Stars : {{item?.watchers_count}}</small>
+                <small class="text-muted brdr">Issues : {{item?.open_issues_count}}</small>
+                <small class="text-muted">Submitted {{item?.pushed_at | customDate}} By {{item?.name}}</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </perfect-scrollbar>
+</div>
